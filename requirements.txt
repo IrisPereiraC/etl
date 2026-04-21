@@ -2,3 +2,4 @@ requests
 pyspark
 openpyxl
 geopy
+python-dotenv
