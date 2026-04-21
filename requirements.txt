@@ -3,4 +3,4 @@ pyspark
 openpyxl
 geopy
 python-dotenv
-PyArrow
+pyarrow
