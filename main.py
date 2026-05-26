@@ -3,7 +3,7 @@ from modules import jdbc_setup, pyspark_factory, tables, treated_files
 from modules.Boto3Cursor import Boto3Cursor
 
 if __name__ == "__main__":
-    print("ETL V 2.5.1\n")
+    print("ETL V 2.6\n")
 
     load_dotenv()
     jdbc_path = jdbc_setup.resolve_jdbc()

@@ -13,9 +13,9 @@ class TableDistrito(ITable):
         df_districs_pd = df_districs_pd.rename(columns={"nome": "bairro"})[["id", "bairro", "região"]]
         df_districs_pd["cidade"] = "São Paulo"
 
-        df_regions_pd = df_districs_pd["região"].drop_duplicates().sort_values().to_frame().rename_axis(
-            "regiao_id"
-        ).reset_index()
+        df_regions_pd = df_districs_pd["região"].drop_duplicates().sort_values().reset_index(
+            drop=True
+        ).to_frame().rename_axis("regiao_id").reset_index()
 
         df_districs_spk = self.spk_cursor.createDataFrame(df_districs_pd.merge(df_regions_pd).drop(columns="região"))
         return df_districs_spk

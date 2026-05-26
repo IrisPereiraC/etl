@@ -1,12 +1,12 @@
 import pandas as pd
 from pyspark.sql import SparkSession
-
 from modules.tables.TableLixo import TableLixo
 from modules.tables.TableRegiao import TableRegiao
 from modules.tables.TableTipoLixo import TableTipoLixo
 from modules.tables.TableDistrito import TableDistrito
+from modules.tables.TableCoordenada import TableCoordenada
 
-TABLES = (TableLixo, TableTipoLixo, TableRegiao, TableDistrito,)
+TABLES = (TableLixo, TableTipoLixo, TableRegiao, TableDistrito, TableCoordenada,)
 
 def persist_tables(
         spk_cursor: SparkSession, db_url: str, db_properties: dict, treated_data_heap: dict[str, pd.DataFrame]
