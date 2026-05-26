@@ -16,5 +16,5 @@ def load_treated_files(boto_cursor: Boto3Cursor) -> dict[str, pd.DataFrame]:
         filename = item.value
         print(f"\t[{i+1}/{len(EnumTreatedFiles)}] {filename}...")
         data_heap[filename] = boto_cursor.ler(f"{filename}.csv")
-    print("Feito!")
+    print("Feito!\n")
     return data_heap

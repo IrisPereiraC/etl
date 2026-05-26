@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import pandas as pd
 from pyspark.sql import SparkSession, DataFrame
 
 
@@ -6,11 +7,13 @@ class ITable(ABC):
 
     table_name: str
     spk_cursor: SparkSession
+    treated_data_heap: dict[str, pd.DataFrame]
 
-    def __init__(self, spk_cursor: SparkSession):
+    def __init__(self, spk_cursor: SparkSession, treated_data_heap: dict[str, pd.DataFrame]):
         if self.table_name is None:
             raise ValueError("Defina \"table_name\" ao definir classes filhas de \"ITable\"")
         self.spk_cursor = spk_cursor
+        self.treated_data_heap = treated_data_heap
 
     def persist_table(self, db_url: str, db_properties: dict):
         df = self._transform_data()

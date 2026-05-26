@@ -24,7 +24,7 @@ class Boto3Cursor:
             raise FileNotFoundError(f"Não foi possível encontrar \'{file_key}\' no S3...")
 
         found_bytes = res["Body"].read()
-        return pd.read_csv(BytesIO(found_bytes))
+        return pd.read_csv(BytesIO(found_bytes), sep="|")
 
     def gravar(self, file_key: str, df: pd.DataFrame):
         raise NotImplementedError()
