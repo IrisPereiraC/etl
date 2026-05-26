@@ -1,5 +1,3 @@
-import os
-
 from pyspark.sql import SparkSession
 from modules.tables.TableLixo import TableLixo
 from modules.tables.TableTipoLixo import TableTipoLixo
