@@ -11,6 +11,7 @@ class TableDistrito(ITable):
         df_districs_pd = self.treated_data_heap[EnumTreatedFiles.DISTRICT.value]
 
         df_districs_pd = df_districs_pd.rename(columns={"nome": "bairro"})[["id", "bairro", "região"]]
+        df_districs_pd["cidade"] = "São Paulo"
 
         df_regions_pd = df_districs_pd["região"].drop_duplicates().sort_values().to_frame().rename_axis(
             "regiao_id"
