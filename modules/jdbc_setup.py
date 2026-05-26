@@ -8,6 +8,7 @@ FILENAME = "jdbc.jar"
 REMOTE_JDBC_URL = "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-9.7.0.tar.gz"
 
 def load_db_credentials():
+    print("Carregando credenciais do banco no .env...")
     url_env = os.environ.get("DB_URL")
     db_name_env = os.environ.get("DB_NAME")
     user_env = os.environ.get("DB_USER")
@@ -17,15 +18,20 @@ def load_db_credentials():
 
     url = f"jdbc:mysql://{url_env}/{db_name_env}"
     properties = {"user": user_env, "password": passw_env, "driver": "com.mysql.cj.jdbc.Driver"}
+    print("Liberado!\n")
     return url, properties
 
 def resolve_jdbc() -> str:
+    print("Módulo JDBC")
     if not os.path.exists(LOCAL_PATH):
         os.mkdir(LOCAL_PATH)
 
     full_path = os.path.join(LOCAL_PATH, FILENAME)
+    print("\tChecando JDBC...")
     if not _check_for_jdbc(full_path):
+        print("\t\tNão existe! Baixando...")
         _get_jdbc(full_path)
+    print("Liberado!\n")
     return full_path
 
 def _check_for_jdbc(full_path) -> bool:
